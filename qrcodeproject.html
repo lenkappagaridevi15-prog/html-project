@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Code Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+padding-top:50px;
+}
+
+.container{
+background:white;
+width:350px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#007bff;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+#qrcode{
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>QR Code Generator</h2>
+
+<input type="text" id="name" placeholder="Enter Name"><br>
+
+<input type="text" id="designation" placeholder="Enter Designation"><br>
+
+<input type="text" id="company" placeholder="Enter Company Name"><br>
+
+<input type="email" id="email" placeholder="Enter Email"><br>
+
+<input type="text" id="phone" placeholder="Enter Phone Number"><br>
+
+<button onclick="generateQR()">Generate QR Code</button>
+
+<div id="qrcode"></div>
+
+</div>
+
+<script>
+
+function generateQR(){
+
+document.getElementById("qrcode").innerHTML="";
+
+var name=document.getElementById("name").value;
+var designation=document.getElementById("designation").value;
+var company=document.getElementById("company").value;
+var email=document.getElementById("email").value;
+var phone=document.getElementById("phone").value;
+
+var data =
+"Name: "+name+
+"\nDesignation: "+designation+
+"\nCompany: "+company+
+"\nEmail: "+email+
+"\nPhone: "+phone;
+
+new QRCode(document.getElementById("qrcode"),{
+text:data,
+width:200,
+height:200
+});
+
+}
+
+</script>
+
+</body>
+</html>
